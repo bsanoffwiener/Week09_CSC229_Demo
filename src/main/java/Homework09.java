@@ -8,6 +8,34 @@
  * @author MoaathAlrajab
  */
 public class Homework09 {
+
+    public static void main(String[] args) {
+        int triangels = 0;
+        int n = 1;
+        while (true) {
+            triangels += n; // Calculate the nth triangel number
+            if (countDivisors(triangels) > 100) {
+                System.out.println("The first triangle number to have over one hundred divisors is: " + triangels);
+                break;
+            }
+            n++;
+        }
+    }
+
+    public static int countDivisors(int n) {
+        int count = 0;
+        int sqrt = (int) Math.sqrt(n);
+        for (int i = 1; i <= sqrt; i++) {
+            if (n % i == 0) {
+                count += 2; // i and (n / i) are both divisors
+            }
+        }
+        if (sqrt * sqrt == n) {
+            count--; // Correct for a perfect square
+        }
+        return count;
+    }
+}
     
     // ToDo 01:  Write an algorithm to solve the following problem
     /*
@@ -30,5 +58,3 @@ What is the value of the first triangle number to have over one hundred divisors
     
     */
     
-    
-}
